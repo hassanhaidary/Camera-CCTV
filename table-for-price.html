@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone Repair Price Checker</title>
+    <link rel="stylesheet" href="styles/style-for-table.css">
+</head>
+<body>
+
+<h2 style="text-align:center;">Check Repair Cost</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Problem</th>
+            <th>Select</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Screen Replacement</td>
+            <td><input type="radio" name="problem" value="Screen Replacement"></td>
+        </tr>
+        <tr>
+            <td>Battery Issue</td>
+            <td><input type="radio" name="problem" value="Battery Issue"></td>
+        </tr>
+        <tr>
+            <td>Charging Port</td>
+            <td><input type="radio" name="problem" value="Charging Port"></td>
+        </tr>
+        <tr>
+            <td>Software Issue</td>
+            <td><input type="radio" name="problem" value="Software Issue"></td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="price">Select a problem to see the price.</div>
+
+<script>
+    const prices = {
+        "Screen Replacement": "$50",
+        "Battery Issue": "$30",
+        "Charging Port": "$25",
+        "Software Issue": "$15"
+    };
+
+    const radios = document.querySelectorAll('input[name="problem"]');
+    const priceDiv = document.getElementById("price");
+
+    radios.forEach(radio => {
+        radio.addEventListener("change", function () {
+            const selectedProblem = this.value;
+            priceDiv.textContent = "Estimated Cost: " + prices[selectedProblem];
+        });
+    });
+</script>
+
+</body>
+</html>
